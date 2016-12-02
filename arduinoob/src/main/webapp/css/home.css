@@ -1,0 +1,195 @@
+body { 
+	background-color: #00979D;
+	background-size : 50px 50px; 
+	padding : 0; 
+	margin : 0;
+	display : flex;
+	color: white;
+	flex-direction : column;
+	min-width : 900px;
+	text-align : center;
+}
+
+#banner{
+	background-color: #00979D;
+	flex-grow:1;
+	height : 80px;
+}
+
+#logo {
+    height: auto; 
+    width: auto; 
+    max-width: 100px; 
+    max-height: 100px;
+}
+
+#schema_tp {
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 167px;
+}
+#schema_tp:active {
+    height: auto; 
+    width: auto; 
+    max-width: 800px; 
+    max-height: 444px;
+}
+
+header h1{
+	color : white;
+	font-size : 200%;
+	margin : 0px;
+	margin-top : 10px;
+	background-size : auto 100%;
+}
+
+#flag{
+	text-align : right;
+	display : inline-block;
+	float : right;
+	margin-right : 10px;
+	margin-top : -60px;
+}
+
+header{
+	text-align : left;
+	padding-left: 15px;
+	color : #00979D;
+	padding-bottom : 10px;
+}
+
+#nav{
+	background-color : #00979D;
+	display : flex;
+	justify-content : space-between;
+}
+
+#navRight{
+	margin-right : 15px;
+}
+
+nav{
+	margin : 0;
+	display : flex;
+	margin-left : 15px;
+}
+nav a{
+	padding : 5px;
+	padding-left : 20px;
+	padding-right : 20px;
+	border-width : 0;
+    border-left: solid 1px silver;
+	margin-top : 20px;
+	font-family : sans-serif;
+	font-size : 110%;
+	text-decoration : none;
+	text-align : center;
+	color : white;
+	display : inline-block;
+}
+
+nav a:last-child{
+    border-right: solid 1px silver;
+}
+nav .current{
+	color : #00979D;
+}
+nav a:not(.current):hover{
+	background-color : #F47A20;
+}
+
+#main{
+	padding-top : 25px;
+	padding-bottom : 25px;
+	text-align : center;
+	background-color : #00979D;
+	display : flex;
+	justify-content : center;
+}
+
+#mainContent{
+	background-color : #00979D;
+	flex-grow:1;
+	min-width : 900px;
+	border-radius : 6px;
+	display : flex;
+	flex-direction : column;
+}
+
+#mainContent h2{
+	font-size : 42px;
+	text-align : center;
+	padding : 0;
+	margin : 0;
+	margin-top : 10px;
+}
+
+form{
+	margin-top : 15px;
+	margin-bottom : 25px;
+	display : flex;
+	justify-content : center;
+}
+
+fieldset{
+	width : 900px;
+	margin-right : 15px;
+	margin-left : 15px;
+	padding : 0;
+	padding-left : 10px;
+	padding-right : 10px;
+	text-align : left;
+	padding-bottom : 10px;
+	font-size : 20px;
+	background-color : rgb(245,245,245);
+}
+
+#formContent{
+	display : flex;
+	//background-color : rgb(200,173,127);
+	background-color :rgb(150,150,150);
+	padding : 5px;
+}
+
+label{
+	width : 150px;
+}
+
+input{
+	flex-grow:1;
+	font-size : 16px;
+}
+
+select{
+	flex-grow:1;
+	font-size : 16px;
+}
+
+#radiobutton{
+	display : block;
+}
+
+button{
+	float : right;
+	font-size : 20px;
+}
+
+footer{
+	border-bottom-right-radius : 10px;
+	border-bottom-left-radius : 10px;
+	font-size : 85%;
+	background-color : #F47A20;
+	padding : 5px;
+	text-align : center;
+	
+}
+footer, footer a, footer a:visited{
+	color :  white;
+}
+footer p{
+	margin : 0px;
+	margin-top : 15px;
+	margin-bottom : 15px;
+	font-size : 20px;
+}
