@@ -16,7 +16,7 @@ public class LoginController {
 	public String home(Model model)
 	{
 		model.addAttribute("loginForm", new LoginForm());
-		return "integated:login";
+		return "integrated:login";
 	}
 	
 	@RequestMapping(value="/sendlogin", method=RequestMethod.POST)
@@ -25,11 +25,11 @@ public class LoginController {
 		LoginForm test = new LoginForm("garaith", "mdp"); 
 		if ( (form.getPseudo().equals(test.getPseudo())) && (form.getPassword().equals(test.getPassword())) )
 		{
-			return "integated:home";
+			return "integrated:home";
 		}
 		else
 		{
-			return "integated:errorLogin";
+			return "integrated:errorLogin";
 		}
 	}
 

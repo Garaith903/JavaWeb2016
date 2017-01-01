@@ -14,11 +14,11 @@ private ArrayList<Category> listCategories;
 	public CategoryService()
 	{
 		listCategories = new ArrayList<Category>();
-		listCategories.add(new Category("1", "Toutes"));
-		listCategories.add(new Category("2", "Basique"));
-		listCategories.add(new Category("3", "Amelioree"));
-		listCategories.add(new Category("4", "Internet"));
-		listCategories.add(new Category("5", "Portable"));
+		listCategories.add(new Category(1,"Toutes", "fra", "all"));
+		listCategories.add(new Category(2,"Basique", "fra","cbasique"));
+		listCategories.add(new Category(3,"Amelioree", "fra","ameliore"));
+		listCategories.add(new Category(4,"Internet", "fra","internet"));
+		listCategories.add(new Category(5,"Portable", "fra", "portable"));
 		
 	}
 	

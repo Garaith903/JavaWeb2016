@@ -15,9 +15,11 @@
 						
 				<form:label path="labelCategory">Selection categorie</form:label>
 						<form:select path="labelCategory">
-							<form:options items="${categories}" itemValue="idCategory" itemLabel="nameCategory"/>
+							<form:options items="${categories}" itemValue="idTranslationCategory" itemLabel="translationName"/>
 						</form:select>
-				<form:button>Recherche</form:button>
+				<form:button>
+					<spring:message code="send"/>
+				</form:button>
 			</form:form>
 		</div>
 	</body>
