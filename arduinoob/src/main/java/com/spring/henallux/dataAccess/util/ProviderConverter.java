@@ -8,13 +8,15 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-import com.spring.henallux.dataAccess.entity.CategoryEntity;
+import com.spring.henallux.dataAccess.entity.TranslationCategoryEntity;
 import com.spring.henallux.dataAccess.entity.NationalityEntity;
+import com.spring.henallux.dataAccess.entity.PictureEntity;
 import com.spring.henallux.dataAccess.entity.ProductEntity;
 import com.spring.henallux.dataAccess.entity.TranslationProductEntity;
 import com.spring.henallux.dataAccess.entity.UserInscriptionFormEntity;
-import com.spring.henallux.model.Category;
+import com.spring.henallux.model.TranslationCategory;
 import com.spring.henallux.model.Nationality;
+import com.spring.henallux.model.Picture;
 import com.spring.henallux.model.Product;
 import com.spring.henallux.model.TranslationProduct;
 import com.spring.henallux.model.UserInscriptionForm;
@@ -32,6 +34,7 @@ public class ProviderConverter {
 		userEntity.setLastName(userModel.getLastName());
 		userEntity.setAddress(userModel.getAddress());
 		userEntity.setBirthdate(convertStringDateToJavaUtilDate(userModel.getBirthdate()));
+		//userEntity.setBirthdate(userModel.getBirthdate());
 		userEntity.setSex(userModel.getSex());
 		userEntity.setCount(userModel.getCount());
 		userEntity.setEmail(userModel.getEmail());
@@ -51,6 +54,7 @@ public class ProviderConverter {
 		userModel.setLastName(userEntity.getLastName());
 		userModel.setAddress(userEntity.getAddress());
 		userModel.setBirthdate(converJavaUtilDatetToStringDate(userEntity.getBirthdate()));
+		//userModel.setBirthdate(userEntity.getBirthdate());
 		userModel.setSex(userEntity.getSex());
 		userModel.setCount(userEntity.getCount());
 		userModel.setEmail(userEntity.getEmail());
@@ -84,9 +88,9 @@ public class ProviderConverter {
 		return nationalityModel;
 	}
 	
-	public CategoryEntity ConvertCategoryModelToCategoryEntity (Category categoryModel)
+	public TranslationCategoryEntity ConvertCategoryModelToCategoryEntity (TranslationCategory categoryModel)
 	{
-		CategoryEntity categoryEntity = new CategoryEntity();
+		TranslationCategoryEntity categoryEntity = new TranslationCategoryEntity();
 		
 		categoryEntity.setId(categoryModel.getIdTranslationCategory());
 		categoryEntity.setTranslation(categoryModel.getTranslationName());
@@ -96,9 +100,9 @@ public class ProviderConverter {
 		return categoryEntity;
 	}
 	
-	public Category ConvertCategoryEntityToCategoryModel (CategoryEntity categoryEntity)
+	public TranslationCategory ConvertCategoryEntityToCategoryModel (TranslationCategoryEntity categoryEntity)
 	{
-		Category categoryModel = new Category();
+		TranslationCategory categoryModel = new TranslationCategory();
 		
 		categoryModel.setIdTranslationCategory(categoryEntity.getId());
 		categoryModel.setTranslationName(categoryEntity.getTranslation());
@@ -132,6 +136,7 @@ public class ProviderConverter {
 		productEntity.setWidth(productModel.getWidth());
 		productEntity.setWeight(productModel.getWeight());
 		productEntity.setPriceu(productModel.getPriceu());
+		productEntity.setQuantity(productModel.getQuantity());
 		productEntity.setIdcateg(productModel.getIdcateg());
 
 		return productEntity;
@@ -161,6 +166,7 @@ public class ProviderConverter {
 		productModel.setWidth(productEntity.getWidth());
 		productModel.setWeight(productEntity.getWeight());
 		productModel.setPriceu(productEntity.getPriceu());
+		productModel.setQuantity(productEntity.getQuantity());
 		productModel.setIdcateg(productEntity.getIdcateg());
 
 		return productModel;
@@ -190,6 +196,30 @@ public class ProviderConverter {
 		translationProductModel.setTranslationdescription(translationProductEntity.getTranslationdescription());
 		
 		return translationProductModel;
+	}
+	
+	public PictureEntity ConvertPictureModelToPictureEntity(Picture pictureModel)
+	{
+		PictureEntity pictureEntity = new PictureEntity();
+		
+		pictureEntity.setIdpic(pictureModel.getIdpic());
+		pictureEntity.setNamepic(pictureModel.getNamepic());
+		pictureEntity.setUrlpic(pictureModel.getUrlpic());
+		pictureEntity.setIdprodc(pictureModel.getIdprodc());
+		
+		return pictureEntity;
+	}
+	
+	public Picture ConvertPictureEntityToPictureModel(PictureEntity pictureEntity)
+	{
+		Picture pictureModel = new Picture();
+		
+		pictureModel.setIdpic(pictureEntity.getIdpic());
+		pictureModel.setNamepic(pictureEntity.getNamepic());
+		pictureModel.setUrlpic(pictureEntity.getUrlpic());
+		pictureModel.setIdprodc(pictureEntity.getIdprodc());
+		
+		return pictureModel;
 	}
 	
 	public java.util.Date convertStringDateToJavaUtilDate(String bD)

@@ -66,14 +66,14 @@
 		</div>
 		<div>
 			<p>Entrez ce code dans la fonction setup</p>
-			<p>void setup()
+			<code>void setup()
 				{
 		   			<c:out value="for(int n = 2; n <= 9; n++)"/>
 		   			{
 		   				pinMode(n, OUTPUT);
 		   			}
 		 		}
-		 	</p>
+		 	</code>
 		 	<p>Cette boucle parcours les pin du numéro 2 aux numéro 9 (8 pins)
 		 		A chaque passage de boucle, on appel la fonction "pinMode" qui prend deux argument</p>
 		 		<ul>
@@ -81,7 +81,7 @@
 		 			<li>Une constante qi permet de dire si la carte reçoit du courent par ce pin (INPUT) ou si la carte envois du courent sur ce pin (OUTPUT)</li>
 		 		</ul>
 		 	<p>Entrez ce code dans la fonction loop</p>
-			<p>void loop()
+			<code>void loop()
 				{
 				<c:out value="for(int n = 2; n <= 9; n++)"/>
 		   			{
@@ -90,15 +90,16 @@
 		   				digitalWrite(n, LOW);
 		   			}
 		 		}
-		 	</p>
+		 	</code>
 		 	<p>Cette boucle parcours les pin du numéro 2 aux numéro 9 (8 pins)
 		 		A chaque passage de boucle, on appel la fonction "digitalWrite" qui prend deux argument</p>
 		 		<ul>
 		 			<li>le numero du pin (ici représenté par la varriable "n")</li>
 		 			<li>Une constante qi permet de dire si la carte envois effectivement du courrent (HIGH) ou si la carte arrête d'envoyer du courrent (LOW)</li>
 		 		</ul>
-		 		<p>Ensuite on appel la fonction "delay" qui prend un entier comme argument. Cet entier permet de dire le temps en milliseconde que la carte doit attendre avant de continuer l'execution du programme
-		 		Et enfin on appelle à nouveau la fonction "digitalWrite" mais cette fois ci le deuxième argument est la constant LOW</p>
+		 		<p>Ensuite on appel la fonction "delay" qui prend un entier comme argument.</p>
+		 		<p>Cet entier permet de dire le temps en milliseconde que la carte doit attendre avant de continuer l'execution du programme</p>
+		 		<p>Et enfin on appelle à nouveau la fonction "digitalWrite" mais cette fois ci le deuxième argument est la constant LOW</p>
 		 </div>
 		 <div>
 		 	<p>Pour executer le programme</p>

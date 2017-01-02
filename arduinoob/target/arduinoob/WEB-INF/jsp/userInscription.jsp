@@ -22,6 +22,7 @@
 						<td>
 							<form:input path="pseudo"/>
 							<form:errors path="pseudo"/>
+							<c:if test="${not empty wrongpseudo}">${wrongpseudo}</c:if>
 						</td>
 					</tr>
 					<tr>
@@ -44,6 +45,7 @@
 						<td>
 							<form:password path="passwordCheck"/>
 							<form:errors path="passwordCheck"/>
+							<c:if test="${not empty wrongcheckpassword}">${wrongcheckpassword}</c:if>
 						</td>
 					</tr>
 					<tr>
@@ -111,7 +113,7 @@
 			    		</td>
 			    		<td>
 							<form:select path="count">
-								<form:options items="${countries}" itemValue="id" itemLabel="translationNameNationality" />
+								<form:options items="${listcountries}" itemValue="idnationality" itemLabel="translation" />
 							</form:select>
 							<form:errors path="count"/>
 						</td>
@@ -125,6 +127,7 @@
 						<td>
 							<form:input path="email"/>
 							<form:errors path="email"/>
+							<c:if test="${not empty wrongemail}">${wrongemail}</c:if>
 						</td>
 					</tr>
 					<tr>
@@ -147,8 +150,6 @@
 					</tr>
 				</table>
 				<c:if test="${not empty inscriptionInfo}">${inscriptionInfo}</c:if>
-				<c:if test="${not empty wrongcheckpassword}">${wrongcheckpassword}</c:if>
-				<c:if test="${not empty wrongemail}">${wrongemail}</c:if>
 			</form:form>
 		</div>
 	</body>

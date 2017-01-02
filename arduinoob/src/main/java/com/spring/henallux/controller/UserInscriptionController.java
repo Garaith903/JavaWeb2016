@@ -37,7 +37,6 @@ public class UserInscriptionController
 	
 	@Autowired
 	private NationalityDAO nationalityDAO;
-	//private NationalityService nationalityService;
 	@Autowired
 	private UserInscriptionFormDAO userInscriptionFormDAO;
 	@Autowired
@@ -46,37 +45,36 @@ public class UserInscriptionController
 	private PasswordEncryption passwordEncryption;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String home( Model model)
+	public String home(Model model, Locale locale)
 	{
 		model.addAttribute("currentUser", new UserInscriptionForm());
-		model.addAttribute("listcountries",nationalityDAO.getNationalities());
+		model.addAttribute("listcountries",nationalityDAO.getNationalities(locale.toString()));
 	
-		
 		return "integrated:userInscription";
 	}
 	
 	@RequestMapping(value="/sendInscription", method=RequestMethod.POST)
 	public String getInscriptionFormData(Model model, @Valid @ModelAttribute(value="CURRENTUSER") UserInscriptionForm currentUser, final BindingResult errors, Locale locale)
-	{
-		//<form:input type="date" path="birthdate"/>
-		String inscriptionMessage;
-		
+	{	
 		String passwordToCompare = currentUser.getPassword();
-		String errorPassword;
-		String errorEmail;
 		String acceptedEmail = "^[a-z0-9._-]+@([a-z0-9._-]+)\\.[a-z]{2,6}$";
+		model.addAttribute("listcountries",nationalityDAO.getNationalities(locale.toString()));
+		
+		if(userInscriptionFormDAO.findOneById(currentUser))
+		{
+			model.addAttribute("wrongpseudo", messageSource.getMessage("errorpseudo", null, locale));
+			return "integrated:/userInscription";
+		}
 		
 		if(!passwordToCompare.equals(currentUser.getPasswordCheck()))
 		{
-			errorPassword = "Le mot de passe de verification doit etre identique au mot de passe";
-			model.addAttribute("wrongcheckpassword", errorPassword);
-			return "integrated:/inscription";
+			model.addAttribute("wrongcheckpassword", messageSource.getMessage("errorpassword", null, locale));
+			return "integrated:/userInscription";
 		}
 		if(!currentUser.getEmail().matches(acceptedEmail))
 		{
-			errorEmail = "Le format de l'adresse email est invalide";
-			model.addAttribute("wrongemail", errorEmail);
-			return "integrated:/inscription";
+			model.addAttribute("wrongemail", messageSource.getMessage("erroremail", null, locale));
+			return "integrated:/userInscription";
 		}
 		
 		
@@ -88,9 +86,8 @@ public class UserInscriptionController
 			{
 				encryptedPassword = passwordEncryption.cryptPwd(currentUser.getPassword());
 				currentUser.setPassword(encryptedPassword);
-				
-				inscriptionMessage = "Inscription reussie";
-				model.addAttribute("inscriptionInfo", inscriptionMessage);
+								
+				model.addAttribute("inscriptionInfo", messageSource.getMessage("inscriptionInfoValid", null, locale));
 				
 				model.addAttribute("pseudo", currentUser);
 				model.addAttribute("password", currentUser);
@@ -112,13 +109,13 @@ public class UserInscriptionController
 				e.printStackTrace();
 			}
 			
-		} else {
-			inscriptionMessage = "Echec de l'inscription";
-			model.addAttribute("inscriptionInfo", inscriptionMessage);
+		} else 
+		{
+			model.addAttribute("inscriptionInfo", messageSource.getMessage("inscriptionInfoError", null, locale));
 			
-			return "integrated:/inscription";
+			return "integrated:/userInscription";
 		}
-		return "integrated:/inscription";
+		return "integrated:/userInscription";
 	}
 
 }

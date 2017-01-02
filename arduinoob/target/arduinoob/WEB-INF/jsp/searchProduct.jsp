@@ -12,13 +12,45 @@
 						method="POST"
 						action="/arduinoob/searchproduct/sendCategory"
 						modelAttribute="categoryForm">
-						
-				<form:label path="labelCategory">Selection categorie</form:label>
-						<form:select path="labelCategory">
-							<form:options items="${categories}" itemValue="idCategory" itemLabel="nameCategory"/>
-						</form:select>
-				<form:button>Recherche</form:button>
+				<table>
+					<tr>
+						<td>
+							<form:label path="labelCategory">Selection categorie</form:label>
+						</td>
+						<td>
+							<form:select path="labelCategory">
+								<form:options items="${categories}" itemValue="translationName" itemLabel="translationName"/>
+							</form:select>
+						<td>
+					</td>
+					<tr>
+						<td>
+							<form:button>
+								<spring:message code="send"/>
+							</form:button>
+						</td>
+					</tr>
+				</table>
 			</form:form>
+		</div>
+		<div class="productscadre" >
+			<c:if test="${not empty listProducts}">
+				<table id=tableresult>
+				<c:forEach var="listValue" items="${listProducts}">
+					<tr>
+						<td>
+							<div class=cadreboard>
+								<a href="">Buy Now</a>
+									<ul>
+										<li>${listValue.idProd}</li>
+										<li>${listValue.idProd}</li>
+									</ul>
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+				</table>
+			</c:if>
 		</div>
 	</body>
 </html>

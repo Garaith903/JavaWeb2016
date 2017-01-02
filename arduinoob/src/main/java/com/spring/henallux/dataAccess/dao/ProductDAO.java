@@ -34,5 +34,21 @@ public class ProductDAO {
 		
 		return products;
 	}
-
+	
+	public ArrayList<Product> getProductsByCategory(String idCateg)
+	{
+		List<ProductEntity> listProducts = productRepository.findAll();
+		
+		ArrayList<Product> products = new ArrayList<Product>();
+		for(ProductEntity productEnt : listProducts)
+		{
+			Product prod = providerConverter.ConvertProductEntityToProductModel(productEnt);
+			if(prod.getIdcateg().equals(idCateg) || idCateg.equals("all"))
+			{
+				products.add(prod);
+			}
+		}
+		
+		return products;
+	}
 }

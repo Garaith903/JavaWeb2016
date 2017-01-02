@@ -1,11 +1,11 @@
 package com.spring.henallux.model;
 
-public class categoryForm {
+public class CategoryForm {
 	
 	private String labelCategory;
 	private String idCategory;
 	
-	public categoryForm(){}
+	public CategoryForm(){}
 	
 	public void setLabelCategory(String lC)
 	{

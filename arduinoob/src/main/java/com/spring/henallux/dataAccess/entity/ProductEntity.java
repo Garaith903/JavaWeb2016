@@ -70,6 +70,9 @@ public class ProductEntity {
 	@Column(name="priceu")
 	private double priceu;
 	
+	@Column(name="quantity")
+	private Integer quantity;
+	
 	@Column(name="idcateg")
 	private String idcateg;
 	
@@ -177,6 +180,11 @@ public class ProductEntity {
 		priceu = price;
 	}
 	
+	public void setQuantity(Integer qtyIn)
+	{
+		quantity = qtyIn;
+	}
+	
 	public void setIdcateg(String idCat)
 	{
 		idcateg = idCat;
@@ -281,6 +289,11 @@ public class ProductEntity {
 	public double getPriceu()
 	{
 		return priceu;
+	}
+	
+	public Integer getQuantity()
+	{
+		return quantity;
 	}
 	
 	public String getIdcateg()

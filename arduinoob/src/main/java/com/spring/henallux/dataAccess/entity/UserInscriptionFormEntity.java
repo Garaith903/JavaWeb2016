@@ -48,6 +48,7 @@ public class UserInscriptionFormEntity{
 	public void setLastName(String lN){ lastName = lN; }
 	public void setAddress(String adr){ address = adr; }
 	public void setBirthdate(java.util.Date bD){ birthdate = bD; }
+	//public void setBirthdate(String bD){ birthdate = bD; }
 	public void setSex(String sx){ sex = sx; }
 	public void setCount(String ct){ nationality = ct; }
 	public void setEmail(String eM){ email = eM; }
@@ -59,6 +60,7 @@ public class UserInscriptionFormEntity{
 	public String getLastName(){ return lastName; }
 	public String getAddress(){ return address; }
 	public java.util.Date getBirthdate(){ return birthdate; }
+	//public String getBirthdate(){ return birthdate; }
 	public String getSex(){ return sex; }
 	public String getCount(){ return nationality; }
 	public String getEmail(){ return email; }

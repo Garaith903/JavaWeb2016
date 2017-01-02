@@ -36,7 +36,7 @@
 		</div> 
 		<div id="footer">
 			<footer>
-				<p>Copyright (c) Demoustier Julien, Schepmns Christophe 2016</p>
+				<p>Copyright (c) Demoustier Julien, Schepmans Christophe 2016</p>
 			</footer>
 		</div>
 	</body>

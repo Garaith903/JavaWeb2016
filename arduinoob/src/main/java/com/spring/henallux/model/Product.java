@@ -22,12 +22,15 @@ public class Product {
 	private double width;
 	private double weight;
 	private double priceu;
+	private int quantity;
 	private String idcateg;
 	
 	//CONSTRUCTORS
-	public Product(){}
+	public Product()
+	{
+	}
 	
-	public Product(String id, String na, String micro, double operVolt, double inputVoltRec, double inputVoltMax, int nbDigitalPin, int nbaAnalogPin, int nbPwmDigitalPin, int dcCurrent, double flash, double sramIn, int clockSp, String eth, String wifiIn, String Usb, double lngt, double widthIn, double weightIn, double price, String idCat)
+	public Product(String id, String na, String micro, double operVolt, double inputVoltRec, double inputVoltMax, int nbDigitalPin, int nbaAnalogPin, int nbPwmDigitalPin, int dcCurrent, double flash, double sramIn, int clockSp, String eth, String wifiIn, String Usb, double lngt, double widthIn, double weightIn, double price, int qty, String idCat)
 	{
 		idproduct = id;
 		name = na;
@@ -49,6 +52,7 @@ public class Product {
 		width = widthIn;
 		weight = weightIn;
 		priceu = price;
+		quantity = qty;
 		idcateg = idCat;
 	}
 	
@@ -153,10 +157,16 @@ public class Product {
 		priceu = price;
 	}
 	
+	public void setQuantity(int qtyIn)
+	{
+		quantity = qtyIn;
+	}
+	
 	public void setIdcateg(String idCat)
 	{
 		idcateg = idCat;
 	}
+	
 	
 	//GETTORS
 	public String getIdproduct()
@@ -259,9 +269,15 @@ public class Product {
 		return priceu;
 	}
 	
+	public int getQuantity()
+	{
+		return quantity;
+	}
+	
 	public String getIdcateg()
 	{
 		return idcateg;
 	}
+	
 }
 

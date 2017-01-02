@@ -24,16 +24,22 @@ public class NationalityDAO {
 	private ProviderConverter providerConverter;
 	
 	
-	public ArrayList<Nationality> getNationalities()
+	public ArrayList<Nationality> getNationalities(String lang)
 	{
+		String filterLng = (lang.equals("en"))?"eng":"fra";
+		
 		List<NationalityEntity> nationalityEntities = nationalityRepository.findAll();
 		ArrayList<Nationality> nationalities = new ArrayList<Nationality>();
+		
 		for (NationalityEntity nE : nationalityEntities)
 		{
-
 			Nationality nationality;
 			nationality = providerConverter.ConvertNationalityEntityToNationalityModel(nE);
-			nationalities.add(nationality);
+			
+			if(nationality.getIdlang().equals(filterLng))
+			{
+				nationalities.add(nationality);
+			}
 		}
 		return nationalities;
 	}

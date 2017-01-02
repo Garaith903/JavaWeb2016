@@ -28,4 +28,22 @@ public class UserInscriptionFormDAO{
 		
 		return providerConverter.ConvertUserEntityToUserModel(userEntity);
 	}
+	
+	public Boolean findOneById(UserInscriptionForm user)
+	{
+		UserInscriptionFormEntity userFound = null;
+		userFound = providerConverter.ConvertUserModelToUserEntity(user);
+		
+		userFound = userInscriptionFormRepository.findOne(user.getPseudo());
+		
+		if(userFound == null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+		
+	}
 }

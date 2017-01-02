@@ -24,10 +24,57 @@ body {
 }
 
 #logo {
+	
     height: auto; 
     width: auto; 
     max-width: 100px; 
     max-height: 100px;
+}
+
+#searchpannel
+{
+	width : 800px;
+	height : auto;
+}
+
+.productscadre
+{
+	width : auto;
+	height : auto;
+	text-align : center;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color : #F47A20;
+	background-color : white;
+	margin: auto;
+}
+
+.cadreboard
+{
+	display : inline-block;
+	color : #00979D;
+	background-color : #F47A20;
+	border : 1px solid white;
+	width : 600px;
+	height : auto;
+	text-align : center;
+	margin: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+}
+
+.pictureboard
+{
+	border: 1px solid #00979D;
+	margin : auto;
+	max-width: 250px; 
+    max-height: 250px;
+	float : left;
 }
 
 #schema_tp {
