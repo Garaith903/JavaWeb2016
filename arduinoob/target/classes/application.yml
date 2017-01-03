@@ -5,5 +5,5 @@ server:
   contextPath: /arduinoob
 spring:
   datasource:
-    password: Gr1m7h0RG@raiTH903
+    password: 
     url: jdbc:mysql://localhost:3306/arduinoobdb?user=root&autoReconnect=true&useSSL=false
