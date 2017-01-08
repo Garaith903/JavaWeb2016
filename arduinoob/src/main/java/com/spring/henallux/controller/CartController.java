@@ -77,9 +77,22 @@ public class CartController {
 		CartForm cart = (CartForm)request.getSession().getAttribute("currentCart");
 		logger.info("CART GLOBAL "+cart.getUserId()+cart.getAmountTotal());
 		
+		/////////////////////////////
+		 Iterator<Integer> keySetIterator = cartFormUpdate.getCart().keySet().iterator(); 
+         
+         while(keySetIterator.hasNext())
+         { 
+         	Integer keyIn = keySetIterator.next();
+         	logger.info("IDPRODUCT "+cartFormUpdate.getCart().get(keyIn).getQuantity());
+         	logger.info("IDPRODUCT "+cartFormUpdate.getCart().get(keyIn).getProduct().getIdproduct());
+         	
+         }
+		/////////////////////////////
+		
 		cart.updateQuantity(cartFormUpdate);
+		model.addAttribute("productcartform", cart);
 
-        return "redirect:/cart";
+        return "redirect:/cart/updatedcart";
 	}
 	
 	

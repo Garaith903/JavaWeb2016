@@ -19,6 +19,7 @@
 								modelAttribute="productcartform">
 						<table id=tableresult>
 						<c:forEach items="${productcartform.cart}" var="entry" varStatus="pStatus">
+							<form:hidden path="cart[${entry.key}].product.idproduct" value="${entry.value.product.idproduct}"/>
 							<tr>
 							<td>
 								<img class="pictureboard" src='<spring:url value="/images/${entry.value.namePicture}.jpg"/>'/>
