@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<p>Sorry this is not a valid login or password</p>
+		<c:if test="${not empty allreadyloggedin}">${allreadyloggedin}</c:if>
+		<c:if test="${not empty errorloginorpassword}">${errorloginorpassword}</c:if>
 	</body>
 </html>

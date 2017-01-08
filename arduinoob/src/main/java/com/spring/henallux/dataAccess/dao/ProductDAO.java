@@ -51,4 +51,19 @@ public class ProductDAO {
 		
 		return products;
 	}
+	
+	public Product getOneProductById(String idProd)
+	{
+		ProductEntity producFound = null;
+		producFound = productRepository.findOne(idProd);
+		
+		if(producFound != null)
+		{
+			return providerConverter.ConvertProductEntityToProductModel(producFound);
+		}
+		else
+		{
+			return null;
+		}
+	}
 }

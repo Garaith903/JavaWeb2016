@@ -7,16 +7,41 @@
 	</head>
 	<body>
 		<div>
-			<p>Login:</p>
+			<h1><spring:message code="connexion"/></h1>
 			<form:form  id="form"
 						method="POST"
-						action="/childgift/login/sendlogin"
+						action="/arduinoob/login/sendlogin"
 						modelAttribute="loginForm">
-				<form:label path="pseudo">Login :</form:label>
-				<form:input path="pseudo"/>
-				<form:label path="password">Mot de passe :</form:label>
-				<form:password path="password"/>
-				<form:button>Send</form:button>
+						
+				<c:if test="${not empty allreadyloggedin}">${allreadyloggedin}</c:if>
+				<c:if test="${not empty justregistered}">${justregistered}</c:if>
+				<table>
+					<tr>
+						<td>
+							<form:label path="pseudo">
+								<spring:message code="pseudo"/>
+							</form:label>
+						</td>
+						<td>
+							<form:input path="pseudo"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<form:label path="password">
+								<spring:message code="password"/>
+							</form:label>
+						</td>
+						<td>
+							<form:password path="password"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<form:button><spring:message code="send"/></form:button>
+						</td>
+					</tr>
+				</table>
 			</form:form>
 		</div>
 	</body>

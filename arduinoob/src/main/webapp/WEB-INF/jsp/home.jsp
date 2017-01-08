@@ -7,16 +7,25 @@
 	</head>
 	<body>
 		<header>
-			<div id="flag">
-				<spring:url var="localeFr" value="">
-					<spring:param name="locale" value="fr"/>
-				</spring:url>
-				<spring:url var="localeEn" value="">
-					<spring:param name="locale" value="en"/>
-				</spring:url>
-				<a href="${localeEn}"><img src='<spring:url value="/images/english_1.png"/>'/></a>
-				<a href="${localeFr}"><img src='<spring:url value="/images/french_1.png"/>'/></a>
-			</div>
+			<table id="flag">
+				<tr>
+					<td>
+						<p id="welcome">Bonjour ${pseudouser}</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<spring:url var="localeFr" value="">
+						<spring:param name="locale" value="fr"/>
+					</spring:url>
+					<spring:url var="localeEn" value="">
+						<spring:param name="locale" value="en"/>
+					</spring:url>
+						<a href="${localeEn}"><img src='<spring:url value="/images/english_1.png"/>'/></a>
+						<a href="${localeFr}"><img src='<spring:url value="/images/french_1.png"/>'/></a>
+					</td>
+				</tr>
+			</table>
 		</header>
 		<div id="presentation">
 			<h1>What is Arduino?</h1>

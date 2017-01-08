@@ -10,22 +10,28 @@
 	</head>
 	<body>
 		<div id="banner">
-			<header> 
-				<img id="logo" src='<spring:url value="/images/logo_arduinoob_1.png"/>'/>
-			</header>
+			<div id="bannerLeft">
+				<header> 
+					<img id="logo" src='<spring:url value="/images/logo_arduinoob_1.png"/>'/>
+				</header>
+			</div>
+			<div id="bannerRight">
+				<a href="<c:url value="/cart"/>"><spring:message code="cart"/><img src='<spring:url value="/images/cart1.png"/>'/></a>
+			</div>
 		</div>
 		<div id="nav">
 			<div id="navLeft">
 				<nav> 
-					<a href="home">Accueil</a> 
-					<a href="searchproduct">Catégories</a>
-					<a href="demonstration">Démonstration</a>
+					<a href="<c:url value="/home"/>"><spring:message code="home"/></a>
+					<a href="<c:url value="/searchproduct"/>"><spring:message code="search"/></a>
+					<a href="<c:url value="/demonstration"/>"><spring:message code="demo"/></a>
 				</nav>
 			</div>
 			<div id="navRight">
 				<nav> 
-					<a href="">Se connecter</a>
-					<a href="inscription">Inscription </a> 
+					<a href="<c:url value="/login"/>"><spring:message code="signin"/></a>
+					<a href="<c:url value="/login/disconnect"/>"><spring:message code="disconnect"/></a>
+					<a href="<c:url value="/inscription"/>"><spring:message code="inscription"/></a> 
 				</nav>
 			</div>
 		</div>

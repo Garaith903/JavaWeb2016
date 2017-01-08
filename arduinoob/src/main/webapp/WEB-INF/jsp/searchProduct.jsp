@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div>
-			<p>search:</p>
+			<h1><spring:message code="searchpage"/></h1>
 			<form:form  id="form"
 						method="POST"
 						action="/arduinoob/searchproduct/sendCategory"
@@ -15,7 +15,9 @@
 				<table>
 					<tr>
 						<td>
-							<form:label path="labelCategory">Selection categorie</form:label>
+							<form:label path="labelCategory">
+								<spring:message code="selectcategory"/>
+							</form:label>
 						</td>
 						<td>
 							<form:select path="labelCategory">
@@ -43,7 +45,7 @@
 							<img class="pictureboard" src='<spring:url value="/images/${listValue.namePic}.jpg"/>'/>
 							
 							
-								<a href="">Buy Now</a>
+								<a href=""><spring:message code="buy"/></a>
 									<ul>
 										<li>${listValue.nameProduct}</li>
 										<li>${listValue.priceProd} €</li>

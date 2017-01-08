@@ -11,7 +11,7 @@
 			<form:form  id="form"
 						method="POST"
 						action="/arduinoob/inscription/sendInscription"
-						modelAttribute="currentUser">
+						modelAttribute="inscriptionUser">
 				<table>
 					<tr>
 						<td>
@@ -20,7 +20,9 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="pseudo"/>
+							<form:input path="pseudo" value="${inscriptionUser.pseudo}"/>
+						</td>
+						<td>
 							<form:errors path="pseudo"/>
 							<c:if test="${not empty wrongpseudo}">${wrongpseudo}</c:if>
 						</td>
@@ -33,6 +35,8 @@
 						</td>
 						<td>
 							<form:password path="password"/>
+						</td>
+						<td>
 							<form:errors path="password"/>
 						</td>
 					</tr>
@@ -44,6 +48,8 @@
 						</td>
 						<td>
 							<form:password path="passwordCheck"/>
+						</td>
+						<td>
 							<form:errors path="passwordCheck"/>
 							<c:if test="${not empty wrongcheckpassword}">${wrongcheckpassword}</c:if>
 						</td>
@@ -55,7 +61,9 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="firstName"/>
+							<form:input path="firstName" value="${inscriptionUser.firstName}"/>
+						</td>
+						<td>
 							<form:errors path="firstName"/>
 						</td>
 					</tr>
@@ -66,7 +74,9 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="lastName"/>
+							<form:input path="lastName" value="${inscriptionUser.lastName}"/>
+						</td>
+						<td>
 							<form:errors path="lastName"/>
 						</td>
 					</tr>
@@ -77,7 +87,9 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="address"/>
+							<form:input path="address" value="${inscriptionUser.address}"/>
+						</td>
+						<td>
 							<form:errors path="address"/>
 						</td>
 					</tr>
@@ -88,8 +100,9 @@
 							</form:label>
 						</td>
 						<td>
-                			
-                			<form:input type="date" path="birthdate"/>
+                			<form:input type="date" path="birthdate" value="${inscriptionUser.birthdate}"/>
+						</td>
+						<td>
                 			<form:errors path="birthdate"/>
                 		</td>
                 	</tr>
@@ -100,8 +113,8 @@
 							</form:label>
                 		</td>
                 		<td>
-                			<form:radiobutton path="sex" value="h"/><spring:message code="sex1"/>
-							<form:radiobutton path="sex" value="f"/><spring:message code="sex2"/>
+                			<form:radiobutton path="sex" value="h" checked="${inscriptionUser.sex == 'h' ? 'checked' : ''}"/><spring:message code="sex1"/>
+							<form:radiobutton path="sex" value="f" checked="${inscriptionUser.sex == 'f' ? 'checked' : ''}"/><spring:message code="sex2"/>
 							<form:errors path="sex"/>
 						</td>
 					</tr>
@@ -125,7 +138,9 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="email"/>
+							<form:input path="email" value="${inscriptionUser.email}"/>
+						</td>
+						<td>
 							<form:errors path="email"/>
 							<c:if test="${not empty wrongemail}">${wrongemail}</c:if>
 						</td>
@@ -137,7 +152,9 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="mobileNumber"/>
+							<form:input path="mobileNumber" value="${inscriptionUser.mobileNumber}"/>
+						</td>
+						<td>
 							<form:errors path="mobileNumber"/>
 						</td>
 					</tr>
@@ -147,9 +164,11 @@
 								<spring:message code="send"/>
 							</form:button>
 						</td>
+						<td>
+							<c:if test="${not empty inscriptionInfo}">${inscriptionInfo}</c:if>
+						</td>
 					</tr>
 				</table>
-				<c:if test="${not empty inscriptionInfo}">${inscriptionInfo}</c:if>
 			</form:form>
 		</div>
 	</body>

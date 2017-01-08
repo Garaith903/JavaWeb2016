@@ -46,4 +46,9 @@ public class UserInscriptionFormDAO{
 		}
 		
 	}
+	
+	public Boolean findPseudo(String user)
+	{
+		return userInscriptionFormRepository.exists(user);	
+	}
 }

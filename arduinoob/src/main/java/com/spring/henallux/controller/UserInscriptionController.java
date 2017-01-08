@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.henallux.dataAccess.dao.NationalityDAO;
 import com.spring.henallux.dataAccess.dao.UserInscriptionFormDAO;
+import com.spring.henallux.model.LoginForm;
 import com.spring.henallux.model.Nationality;
 import com.spring.henallux.model.UserInscriptionForm;
 import com.spring.henallux.service.NationalityService;
@@ -24,17 +25,8 @@ import com.spring.henallux.service.PasswordEncryption;
 
 @Controller
 @RequestMapping(value="/inscription")
-@SessionAttributes({UserInscriptionController.CURRENTUSER})
 public class UserInscriptionController 
-{
-	protected static final String CURRENTUSER = "currentUser";
-	
-	@ModelAttribute(CURRENTUSER)
-	public UserInscriptionForm user()
-	{
-		return new UserInscriptionForm();
-	}
-	
+{	
 	@Autowired
 	private NationalityDAO nationalityDAO;
 	@Autowired
@@ -47,31 +39,33 @@ public class UserInscriptionController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale)
 	{
-		model.addAttribute("currentUser", new UserInscriptionForm());
+		model.addAttribute("inscriptionUser", new UserInscriptionForm());
 		model.addAttribute("listcountries",nationalityDAO.getNationalities(locale.toString()));
 	
 		return "integrated:userInscription";
 	}
 	
 	@RequestMapping(value="/sendInscription", method=RequestMethod.POST)
-	public String getInscriptionFormData(Model model, @Valid @ModelAttribute(value="CURRENTUSER") UserInscriptionForm currentUser, final BindingResult errors, Locale locale)
+	public String getInscriptionFormData(Model model, @Valid@ModelAttribute(value="inscriptionUser") UserInscriptionForm inscriptionUser, final BindingResult errors, Locale locale)
 	{	
-		String passwordToCompare = currentUser.getPassword();
+		String passwordToCompare = inscriptionUser.getPassword();
 		String acceptedEmail = "^[a-z0-9._-]+@([a-z0-9._-]+)\\.[a-z]{2,6}$";
-		model.addAttribute("listcountries",nationalityDAO.getNationalities(locale.toString()));
 		
-		if(userInscriptionFormDAO.findOneById(currentUser))
+		model.addAttribute("currentUser", inscriptionUser);
+		model.addAttribute("listcountries",nationalityDAO.getNationalities(locale.toString()));
+			
+		if(userInscriptionFormDAO.findPseudo(inscriptionUser.getPseudo()))
 		{
 			model.addAttribute("wrongpseudo", messageSource.getMessage("errorpseudo", null, locale));
 			return "integrated:/userInscription";
 		}
 		
-		if(!passwordToCompare.equals(currentUser.getPasswordCheck()))
+		if(!passwordToCompare.equals(inscriptionUser.getPasswordCheck()))
 		{
 			model.addAttribute("wrongcheckpassword", messageSource.getMessage("errorpassword", null, locale));
 			return "integrated:/userInscription";
 		}
-		if(!currentUser.getEmail().matches(acceptedEmail))
+		if(!inscriptionUser.getEmail().matches(acceptedEmail))
 		{
 			model.addAttribute("wrongemail", messageSource.getMessage("erroremail", null, locale));
 			return "integrated:/userInscription";
@@ -84,24 +78,14 @@ public class UserInscriptionController
 			
 			try
 			{
-				encryptedPassword = passwordEncryption.cryptPwd(currentUser.getPassword());
-				currentUser.setPassword(encryptedPassword);
+				encryptedPassword = passwordEncryption.cryptPwd(inscriptionUser.getPassword());
+				inscriptionUser.setPassword(encryptedPassword);
 								
-				model.addAttribute("inscriptionInfo", messageSource.getMessage("inscriptionInfoValid", null, locale));
-				
-				model.addAttribute("pseudo", currentUser);
-				model.addAttribute("password", currentUser);
-				model.addAttribute("firstName", currentUser);
-				model.addAttribute("lastName", currentUser);
-				model.addAttribute("address", currentUser);
-				model.addAttribute("birthdate", currentUser);
-				model.addAttribute("sex", currentUser);
-				model.addAttribute("count", currentUser);
-				model.addAttribute("email", currentUser);
-				model.addAttribute("mobileNumber", currentUser);
+				model.addAttribute("justregistered", "Veuillez confirmer votre inscription");
+				userInscriptionFormDAO.saveUser(inscriptionUser);
 
-				userInscriptionFormDAO.saveUser(currentUser);
-				return "integrated:home";
+				model.addAttribute("pseudo",inscriptionUser.getPseudo());
+				return "redirect:/login/confirminscription";
 
 			}
 			catch(NoSuchAlgorithmException e)
