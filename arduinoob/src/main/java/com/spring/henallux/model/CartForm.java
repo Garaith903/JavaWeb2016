@@ -74,5 +74,69 @@ public class CartForm
         }
         return total;
     }
+	
+	public void updateQuantity(CartForm cartFormulaire) 
+	{
+        if (cartFormulaire != null)
+        {
+        	Iterator<Integer> keySetIterator = cartFormulaire.getCart().keySet().iterator();
+             
+            while(keySetIterator.hasNext())
+            {	
+            	Integer keyInFormulaire = keySetIterator.next();
+            	this.updateProduct(cartFormulaire.getCart().get(keyInFormulaire), keyInFormulaire);	
+            }
+        }
+    }
+	
+	public void updateProduct(ProductCart prodCartFormulaire, Integer keyProdFormulaire)
+	{
+		ProductCart productCartGeneralToUpdate = this.findProductById(prodCartFormulaire.getProduct().getIdproduct());
+		Integer integerKeyCartGeneralToUpdate = this.findKeyProductCartById(prodCartFormulaire.getProduct().getIdproduct());
+ 
+        if (productCartGeneralToUpdate != null) 
+        {
+            if (prodCartFormulaire.getQuantity() <= 0)
+            {
+                this.cart.remove(integerKeyCartGeneralToUpdate);
+            } 
+            else 
+            {
+            	productCartGeneralToUpdate.setQuantity(prodCartFormulaire.getQuantity());
+            }
+        }
+    }
+	
+	public ProductCart findProductById(String idProd)
+	{
+		Iterator<Integer> keySetIterator = this.cart.keySet().iterator(); 
+        
+        while(keySetIterator.hasNext())
+        { 
+        	Integer keyIn = keySetIterator.next();
+        	
+        	if(this.cart.get(keyIn).getProduct().getIdproduct().equals(idProd))
+        	{
+        		return this.cart.get(keyIn);
+        	}
+        }
+		return null;
+    }
+	
+	public Integer findKeyProductCartById(String idProd)
+	{
+		Iterator<Integer> keySetIterator = this.cart.keySet().iterator(); 
+        
+        while(keySetIterator.hasNext())
+        { 
+        	Integer keyIn = keySetIterator.next();
+        	
+        	if(this.cart.get(keyIn).getProduct().getIdproduct().equals(idProd))
+        	{
+        		return keyIn;
+        	}
+        }
+		return null;
+    }
 
 }

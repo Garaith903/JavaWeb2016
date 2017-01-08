@@ -62,11 +62,6 @@
 									<td>
 										<a href="<c:url value="/cart/CartRemoveProduct?idproducttoremove=${entry.value.product.idproduct}"/>">Delete</a>
 									</td>
-									<td>
-										<form:button>
-											<spring:message code="updateCartProduct"/>
-										</form:button>
-									</td>
 								</tr>
 							</c:forEach>
 							
@@ -80,6 +75,11 @@
 								</tr>
 							
 							<tr>
+								<td>
+									<form:button>
+										<spring:message code="updateCartProduct"/>
+									</form:button>
+								</td>
 								<td>
 									<a href="<c:url value="/cart"/>"><spring:message code="cart"/><img src='<spring:url value="/images/validatecart.png"/>'/></a>
 								</td>

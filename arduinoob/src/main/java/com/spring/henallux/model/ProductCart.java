@@ -1,9 +1,11 @@
 package com.spring.henallux.model;
 
+import javax.validation.constraints.Min;
+
 public class ProductCart {
 	
 	private Product product;
-	private int quantity;
+	private Integer quantity;
 	private String namePicture;
 	
 	public ProductCart (){}

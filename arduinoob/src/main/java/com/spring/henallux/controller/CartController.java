@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import com.spring.henallux.model.CartForm;
 import com.spring.henallux.model.LoginForm;
 import com.spring.henallux.model.Product;
 import com.spring.henallux.model.ProductCart;
+import com.spring.henallux.model.UserInscriptionForm;
 
 @Controller
 @RequestMapping(value="/cart")
@@ -68,12 +70,19 @@ public class CartController {
 		return "integrated:mycart";
 	}
 	
+
 	@RequestMapping(value="/updatequatity", method=RequestMethod.POST)
-	public String updateQuantity(Model model, @ModelAttribute(value="currentUser") LoginForm user)
+    public String shoppingCartUpdateQty(HttpServletRequest request, Model model,@ModelAttribute(value="productcartform") CartForm cartFormUpdate, Locale locale)
 	{
+		CartForm cart = (CartForm)request.getSession().getAttribute("currentCart");
+		logger.info("CART GLOBAL "+cart.getUserId()+cart.getAmountTotal());
 		
-		return "integrated:home";
+		cart.updateQuantity(cartFormUpdate);
+
+        return "redirect:/cart";
 	}
+	
+	
 	
 	@RequestMapping(value="/CartRemoveProduct")
     public String removeProductHandler(HttpServletRequest request, Model model, @RequestParam(value = "idproducttoremove", defaultValue = "") String idProdRemove) {
