@@ -3,21 +3,26 @@ package com.spring.henallux.dataAccess.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
 import com.spring.henallux.dataAccess.entity.TranslationCategoryEntity;
+import com.spring.henallux.dataAccess.entity.CartEntity;
+import com.spring.henallux.dataAccess.entity.LineProductEntity;
 import com.spring.henallux.dataAccess.entity.NationalityEntity;
 import com.spring.henallux.dataAccess.entity.PictureEntity;
 import com.spring.henallux.dataAccess.entity.ProductEntity;
+import com.spring.henallux.dataAccess.entity.PromotionEntity;
 import com.spring.henallux.dataAccess.entity.TranslationProductEntity;
 import com.spring.henallux.dataAccess.entity.UserInscriptionFormEntity;
 import com.spring.henallux.model.TranslationCategory;
+import com.spring.henallux.model.Cart;
+import com.spring.henallux.model.LineProduct;
 import com.spring.henallux.model.Nationality;
 import com.spring.henallux.model.Picture;
 import com.spring.henallux.model.Product;
+import com.spring.henallux.model.Promotion;
 import com.spring.henallux.model.TranslationProduct;
 import com.spring.henallux.model.UserInscriptionForm;
 
@@ -220,6 +225,70 @@ public class ProviderConverter {
 		pictureModel.setIdprodc(pictureEntity.getIdprodc());
 		
 		return pictureModel;
+	}
+	
+	public PromotionEntity ConvertPromotionModelToPromotionEntity(Promotion promotionModel)
+	{
+		PromotionEntity promotionEntity = new PromotionEntity();
+		promotionEntity.setIdpromweek(promotionModel.getIdpromweek());
+		promotionEntity.setPromotionofweek(promotionModel.getPromotionofweek());
+		promotionEntity.setIdcategprod(promotionModel.getIdcategprod());
+		
+		return promotionEntity;
+	}
+	
+	public Promotion ConvertPromotionEntityToPromotionModel(PromotionEntity promotionEntity)
+	{
+		Promotion promotionModel = new Promotion();
+		promotionModel.setIdpromweek(promotionEntity.getIdpromweek());
+		promotionModel.setPromotionofweek(promotionEntity.getPromotionofweek());
+		promotionModel.setIdcategprod(promotionEntity.getIdcategprod());
+		
+		return promotionModel;
+	}
+	
+	public CartEntity ConvertCartModelToCartEntity(Cart cartModel)
+	{
+		CartEntity cartEntity = new CartEntity();
+		cartEntity.setIdcart(cartModel.getIdcart());
+		cartEntity.setOrderdate(cartModel.getOrderdate());
+		cartEntity.setIdperson(cartModel.getIdperson());
+		return cartEntity;
+	}
+	
+	public Cart ConvertCartEntityToCartModel(CartEntity cartEntity)
+	{
+		Cart cartModel = new Cart();
+		cartModel.setIdcart(cartEntity.getIdcart());
+		cartModel.setOrderdate(cartEntity.getOrderdate());
+		cartModel.setIdperson(cartEntity.getIdperson());
+		return cartModel;
+	}
+	
+	public LineProductEntity ConvertLineProductModelToLineProductEntity(LineProduct lineProductModel)
+	{
+		LineProductEntity lineProductEntity = new LineProductEntity ();
+		
+		lineProductEntity.setIdlineproduct(lineProductModel.getIdlineproduct());
+		lineProductEntity.setQuantity(lineProductModel.getQuantity());
+		lineProductEntity.setDiscount(lineProductModel.getDiscount());
+		lineProductEntity.setIdcartperson(lineProductModel.getIdcartperson());
+		lineProductEntity.setIdproduct(lineProductModel.getIdproduct());
+
+		return lineProductEntity;
+	}
+	
+	public LineProduct ConvertLineProductEntityToLineProductModel(LineProductEntity lineProductEntity)
+	{
+		LineProduct lineProductModel = new LineProduct ();
+		
+		lineProductModel.setIdlineproduct(lineProductEntity.getIdlineproduct());
+		lineProductModel.setQuantity(lineProductEntity.getQuantity());
+		lineProductModel.setDiscount(lineProductEntity.getDiscount());
+		lineProductModel.setIdcartperson(lineProductEntity.getIdcartperson());
+		lineProductModel.setIdproduct(lineProductEntity.getIdproduct());
+
+		return lineProductModel;
 	}
 	
 	public java.util.Date convertStringDateToJavaUtilDate(String bD)

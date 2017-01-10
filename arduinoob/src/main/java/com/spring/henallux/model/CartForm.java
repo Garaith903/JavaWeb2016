@@ -70,7 +70,7 @@ public class CartForm
         while(keySetIterator.hasNext())
         { 
         	Integer keyIn = keySetIterator.next();
-        	total += cart.get(keyIn).getAmount();		
+        	total += cart.get(keyIn).getTotalOfProduct();		
         }
         return total;
     }
@@ -96,7 +96,7 @@ public class CartForm
  
         if (productCartGeneralToUpdate != null) 
         {
-            if (prodCartFormulaire.getQuantity() <= 0)
+            if (prodCartFormulaire.getQuantity() <= 0 || prodCartFormulaire.getQuantity() > productCartGeneralToUpdate.getQuantity())
             {
                 this.cart.remove(integerKeyCartGeneralToUpdate);
             } 

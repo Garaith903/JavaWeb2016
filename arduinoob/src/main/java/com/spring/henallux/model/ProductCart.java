@@ -7,6 +7,7 @@ public class ProductCart {
 	private Product product;
 	private Integer quantity;
 	private String namePicture;
+	private double discount;
 	
 	public ProductCart (){}
 	public ProductCart (Product prod, int qty, String namePic)
@@ -14,6 +15,7 @@ public class ProductCart {
 		product = prod;
 		quantity = qty;
 		namePicture = namePic;
+		discount = 0;
 	}
 	
 	public void setProduct(Product productIn)
@@ -27,6 +29,10 @@ public class ProductCart {
 	public void setNamePic(String namePictureIn)
 	{
 		namePicture = namePictureIn;
+	}
+	public void setDiscount(double disc)
+	{
+		discount = disc;
 	}
 	
 	
@@ -44,7 +50,29 @@ public class ProductCart {
 	{
 		return namePicture;
 	}
+	public double getDiscount()
+	{
+		return discount;
+	}
+	
 	public double getAmount() {
         return this.product.getPriceu() * this.quantity;
+    }
+	
+	public double getAmountWithDiscount() 
+	{
+		if(discount == 0)
+		{
+			return  0;
+		}
+		else
+		{
+			return  getAmount()*discount;
+		}
+    }
+	
+	public double getTotalOfProduct() 
+	{
+		return (getAmount()-getAmountWithDiscount());
     }
 }

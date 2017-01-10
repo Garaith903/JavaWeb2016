@@ -37,7 +37,7 @@ public class UserInscriptionForm
 	@NotNull
 	@Size(min=3,max=50)
 	private String email;
-	@Size(min=6,max=10)
+	
 	private String mobileNumber;
 	
 	public UserInscriptionForm(){}

@@ -36,6 +36,7 @@
 			</form:form>
 		</div>
 		<div class="productscadre" >
+			<c:if test="${empty listProducts}"><spring:message code="emptylist"/></c:if>	
 			<c:if test="${not empty listProducts}">
 				<table id=tableresult>
 				<c:forEach items="${listProducts}" var="listValue">

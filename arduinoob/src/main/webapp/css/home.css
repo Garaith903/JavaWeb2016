@@ -75,7 +75,6 @@ body {
 {
 	display : inline-block;
 	color : white;
-	font-family : "comic sans ms";
 	font-size : 200%;
 	background-color : #F47A20;
 	border : 1px solid white;
@@ -87,7 +86,6 @@ body {
 	padding-right: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	
 }
 
 .pictureboard

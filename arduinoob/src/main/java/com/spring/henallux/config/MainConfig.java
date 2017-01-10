@@ -5,6 +5,7 @@ import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 import org.springframework.validation.DefaultMessageCodesResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -61,6 +62,12 @@ public class MainConfig extends WebMvcConfigurerAdapter{
 		LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
 		interceptor.setParamName("locale");
 		registry.addInterceptor(interceptor);
+	}
+	
+	@Bean
+	public HibernateJpaSessionFactoryBean sessionFactory()
+	{
+		return new HibernateJpaSessionFactoryBean();
 	}
 	
 }
