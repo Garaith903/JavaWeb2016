@@ -49,7 +49,7 @@
 														<spring:message code="quantityproduct"/>
 													</td>
 													<td>
-														<form:input path="cart[${entry.key}].quantity" value="${entry.value.quantity}"/>
+														<form:input path="cart[${entry.key}].quantity" type="number" value="${entry.value.quantity}"/>
 													</td>
 													<td>
 														<form:button>

@@ -40,8 +40,6 @@ import com.spring.henallux.model.UserInscriptionForm;
 @SessionAttributes({"currentUser","currentCart"})
 public class CartController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
-	
 	@Autowired
 	private ProductDAO productDAO;
 	
@@ -65,14 +63,6 @@ public class CartController {
 		String keyOfPromo = "week"+((numberOfWeek<10)?"0":"")+numberOfWeek;
 		
 		Promotion promotionOfTheWeek = promotionDAO.getThePromoOfTheCurrentWeek(keyOfPromo);
-		
-		HashMap<Integer, ProductCart> cartU = new HashMap<Integer, ProductCart>();
-		cartU.put(1, new ProductCart(new Product("board01","Arduino NANO", "ATmega168", 5, 7, 20, 14, 8, 6, 40, 32, 2, 16, null, null, null, 33.00, 18.00, 6.00, 15.00, 100,"cbasique"), 12, "ArduinoNanoFront_3_sm"));
-		cartU.put(2, new ProductCart(new Product("board02", "Arduino MICRO", "ATmega32U4", 5, 7, 20, 20, 12, 0, 20, 32, 2.50, 16, null, null, null, 48.00, 18.00, 13.00, 18.00, 100, "cbasique"), 13, "A000053_iso_both1"));
-		cartU.put(3, new ProductCart(new Product("board09", "Arduino MEGA", "ATmega2560", 5, 7, 20, 54, 16, 6, 20, 256, 8, 16, null, null, null, 101.52, 53.30, 37.00, 40.00, 52, "ameliore"), 10, "AG_Mega"));
-		
-		currentUsercart.setCart(cartU);
-		currentUsercart.setUserId("Garaith");
 		
 		if(promotionOfTheWeek != null)
 		{
@@ -109,20 +99,6 @@ public class CartController {
     public String shoppingCartUpdateQty(HttpServletRequest request, Model model,@ModelAttribute(value="productcartform") CartForm cartFormUpdate, Locale locale)
 	{
 		CartForm cart = (CartForm)request.getSession().getAttribute("currentCart");
-		logger.info("CART GLOBAL "+cart.getUserId()+cart.getAmountTotal());
-		
-		
-		/////////////////////////////
-		 Iterator<Integer> keySetIterator = cartFormUpdate.getCart().keySet().iterator(); 
-         
-         while(keySetIterator.hasNext())
-         { 
-         	Integer keyIn = keySetIterator.next();
-         	logger.info("IDPRODUCT "+cartFormUpdate.getCart().get(keyIn).getQuantity());
-         	logger.info("IDPRODUCT "+cartFormUpdate.getCart().get(keyIn).getProduct().getIdproduct());
-         	
-         }
-		/////////////////////////////
 		
 		cart.updateQuantity(cartFormUpdate);
 		model.addAttribute("productcartform", cart);
@@ -133,10 +109,12 @@ public class CartController {
 	
 	
 	@RequestMapping(value="/CartRemoveProduct")
-    public String removeProductHandler(HttpServletRequest request, Model model, @RequestParam(value = "idproducttoremove", defaultValue = "") String idProdRemove) {
+    public String removeProductHandler(HttpServletRequest request, Model model, @RequestParam(value = "idproducttoremove", defaultValue = "") String idProdRemove)
+	{
         Product product = null;
 
-        if (idProdRemove != null && idProdRemove.length() > 0) {
+        if (idProdRemove != null && idProdRemove.length() > 0) 
+        {
             product = productDAO.getOneProductById(idProdRemove);
         }
         if (product != null) 

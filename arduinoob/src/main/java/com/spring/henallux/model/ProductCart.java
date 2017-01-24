@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 public class ProductCart {
 	
 	private Product product;
-	private Integer quantity;
+	private int quantity;
 	private String namePicture;
 	private double discount;
 	
@@ -26,7 +26,7 @@ public class ProductCart {
 	{
 		quantity = qtyIn;
 	}
-	public void setNamePic(String namePictureIn)
+	public void setNamePicture(String namePictureIn)
 	{
 		namePicture = namePictureIn;
 	}

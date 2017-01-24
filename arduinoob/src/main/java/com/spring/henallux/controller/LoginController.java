@@ -31,8 +31,6 @@ import com.spring.henallux.service.PasswordEncryption;
 @SessionAttributes({"currentUser"})
 public class LoginController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	
 	@Autowired
 	private UserDAO userDAO;
 	@Autowired
@@ -44,7 +42,7 @@ public class LoginController {
 	public String home(Model model, @ModelAttribute(value="currentUser")LoginForm currentUser, Locale locale)
 	{
 		model.addAttribute("loginForm", new LoginForm());
-		logger.info("CurrnetUser "+currentUser);
+
 		String pseudo = currentUser.getPseudo();
 		
 		if(pseudo != null)

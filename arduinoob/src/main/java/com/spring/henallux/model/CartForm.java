@@ -138,5 +138,9 @@ public class CartForm
         }
 		return null;
     }
+	public int countCartElement()
+	{
+		return this.cart.size();
+	}
 
 }

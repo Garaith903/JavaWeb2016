@@ -45,8 +45,7 @@
 							<div class=cadreboard>
 							<img class="pictureboard" src='<spring:url value="/images/${listValue.namePic}.jpg"/>'/>
 							
-							
-								<a href=""><spring:message code="buy"/></a>
+								<a href="<c:url value="/searchproduct/selectedProduct?idselectedproduct=${listValue.idProduct}"/>"><spring:message code="buy"/></a>
 									<ul>
 										<li>${listValue.nameProduct}</li>
 										<li>${listValue.priceProd} €</li>
